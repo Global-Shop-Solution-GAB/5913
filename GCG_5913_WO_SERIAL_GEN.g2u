@@ -1,0 +1,483 @@
+Program.Sub.ScreenSU.Start
+Gui.F_GenSerial..Create(BaseForm)
+Gui.F_GenSerial..Caption("Generate Serial# List by Job")
+Gui.F_GenSerial..Size(8250,8220)
+Gui.F_GenSerial..MinX(0)
+Gui.F_GenSerial..MinY(0)
+Gui.F_GenSerial..Position(0,0)
+Gui.F_GenSerial..BackColor(-2147483633)
+Gui.F_GenSerial..MaxButton(False)
+Gui.F_GenSerial..MinButton(False)
+Gui.F_GenSerial..MousePointer(0)
+Gui.F_GenSerial..Sizeable(False)
+Gui.F_GenSerial..Event(UnLoad,Form_UnLoad)
+Gui.F_GenSerial..AlwaysOnTop(False)
+Gui.F_GenSerial..FontName("Tahoma")
+Gui.F_GenSerial..FontSize(8.25)
+Gui.F_GenSerial..ControlBox(True)
+Gui.F_GenSerial..Moveable(True)
+Gui.F_GenSerial..ShowInTaskBar(True)
+Gui.F_GenSerial..TitleBar(True)
+Gui.F_GenSerial.txtBaseSN.Create(TextBox,"",True,990,300,0,1515,885,True,0,"Arial",8,-2147483643,1)
+Gui.F_GenSerial.lbl1.Create(Label,"Base",True,570,255,0,1485,675,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lbl1.BorderStyle(0)
+Gui.F_GenSerial.lbl2.Create(Label,"Start Count",True,990,255,0,2910,675,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lbl2.BorderStyle(0)
+Gui.F_GenSerial.txtStartCnt.Create(TextBox,"",True,930,300,0,2940,885,True,0,"Arial",8,-2147483643,1)
+Gui.F_GenSerial.txtStartCnt.NumericOnly(2)
+Gui.F_GenSerial.lbl3.Create(Label,"Format",True,765,255,0,4215,675,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lbl3.BorderStyle(0)
+Gui.F_GenSerial.lbl4.Create(Label,"Qty Needed",True,1080,255,0,6885,675,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lbl4.BorderStyle(0)
+Gui.F_GenSerial.txtQtyNeeded.Create(TextBox,"",True,855,330,0,6945,885,False,0,"Arial",8,-2147483643,1)
+Gui.F_GenSerial.txtQtyNeeded.NumericOnly(2)
+Gui.F_GenSerial.txtQtyNeeded.Event(LostFocus,txtQtyNeeded_LostFocus)
+Gui.F_GenSerial.txtJob.Create(TextBox,"",True,1170,300,0,1065,135,True,0,"Arial",8,-2147483643,1)
+Gui.F_GenSerial.cmdBrwsJob.Create(Button)
+Gui.F_GenSerial.cmdBrwsJob.Size(465,375)
+Gui.F_GenSerial.cmdBrwsJob.Position(2340,105)
+Gui.F_GenSerial.cmdBrwsJob.Caption("^")
+Gui.F_GenSerial.cmdBrwsJob.Event(Click,cmdBrwsJob_Click)
+Gui.F_GenSerial.cmdBrwsJob.Enabled(True)
+Gui.F_GenSerial.cmdBrwsJob.Visible(True)
+Gui.F_GenSerial.cmdBrwsJob.Zorder(0)
+Gui.F_GenSerial.cmdBrwsJob.FontName("Tahoma")
+Gui.F_GenSerial.cmdBrwsJob.FontSize(7.8)
+Gui.F_GenSerial.lbl5.Create(Label,"Select Job",True,885,255,0,165,225,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lbl5.BorderStyle(0)
+Gui.F_GenSerial.ddlFormat.Create(DropDownList)
+Gui.F_GenSerial.ddlFormat.Size(1125,330)
+Gui.F_GenSerial.ddlFormat.Position(4260,885)
+Gui.F_GenSerial.ddlFormat.Enabled(True)
+Gui.F_GenSerial.ddlFormat.Visible(True)
+Gui.F_GenSerial.ddlFormat.Zorder(0)
+Gui.F_GenSerial.ddlFormat.FontName("Tahoma")
+Gui.F_GenSerial.ddlFormat.FontSize(7.8)
+Gui.F_GenSerial.ddlSeparator.Create(DropDownList)
+Gui.F_GenSerial.ddlSeparator.Size(960,330)
+Gui.F_GenSerial.ddlSeparator.Position(5745,885)
+Gui.F_GenSerial.ddlSeparator.Enabled(True)
+Gui.F_GenSerial.ddlSeparator.Visible(True)
+Gui.F_GenSerial.ddlSeparator.Zorder(0)
+Gui.F_GenSerial.ddlSeparator.FontName("Tahoma")
+Gui.F_GenSerial.ddlSeparator.FontSize(7.8)
+Gui.F_GenSerial.lbl6.Create(Label,"Separator",True,915,255,0,5700,675,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lbl6.BorderStyle(0)
+Gui.F_GenSerial.GsGridControl1.Create(GsGridControl)
+Gui.F_GenSerial.GsGridControl1.Size(7665,5715)
+Gui.F_GenSerial.GsGridControl1.Position(165,1770)
+Gui.F_GenSerial.GsGridControl1.Anchor(14)
+Gui.F_GenSerial.GsGridControl1.Enabled(True)
+Gui.F_GenSerial.GsGridControl1.Visible(True)
+Gui.F_GenSerial.GsGridControl1.Zorder(0)
+Gui.F_GenSerial.lblJobInfo.Create(Label,"Serial#s for Job",True,4740,255,0,165,1380,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lblJobInfo.BorderStyle(0)
+Gui.F_GenSerial.cmdGenerate.Create(Button)
+Gui.F_GenSerial.cmdGenerate.Size(2565,450)
+Gui.F_GenSerial.cmdGenerate.Position(5235,1275)
+Gui.F_GenSerial.cmdGenerate.Caption("Generate Serial# List")
+Gui.F_GenSerial.cmdGenerate.Event(Click,cmdGenerate_Click)
+Gui.F_GenSerial.cmdGenerate.FontStyle(True,False,False,False,False)
+Gui.F_GenSerial.cmdGenerate.Enabled(True)
+Gui.F_GenSerial.cmdGenerate.Visible(True)
+Gui.F_GenSerial.cmdGenerate.Zorder(0)
+Gui.F_GenSerial.cmdGenerate.FontName("Tahoma")
+Gui.F_GenSerial.cmdGenerate.FontSize(7.8)
+Gui.F_GenSerial.lbl8.Create(Label,"Prefix",True,675,255,0,165,675,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lbl8.BorderStyle(0)
+Gui.F_GenSerial.txtPrefix.Create(TextBox,"",True,900,330,0,165,885,True,0,"Arial",8,-2147483643,1)
+Gui.F_GenSerial.txtPrefix.DefaultValue("1040096")
+Gui.F_GenSerial.txtPrefix.MaxLength(25)
+Gui.F_GenSerial.lbl7.Create(Label,"Label",True,2895,405,0,3030,210,True,0,"Arial",8,-2147483633,0,0)
+Gui.F_GenSerial.lbl7.FontStyle(True,False,False,False,False)
+Gui.F_GenSerial.lbl7.BorderStyle(0)
+Gui.F_GenSerial.cmdSave.Create(Button)
+Gui.F_GenSerial.cmdSave.Size(810,375)
+Gui.F_GenSerial.cmdSave.Position(6960,120)
+Gui.F_GenSerial.cmdSave.Caption("Save")
+Gui.F_GenSerial.cmdSave.Event(Click,cmdSave_Click)
+Gui.F_GenSerial.cmdSave.Enabled(False)
+Gui.F_GenSerial.cmdSave.Visible(True)
+Gui.F_GenSerial.cmdSave.Zorder(0)
+Gui.F_GenSerial.cmdSave.FontName("Tahoma")
+Gui.F_GenSerial.cmdSave.FontSize(7.8)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+v.Global.sJobSuffix.Declare(String)
+v.Global.sJob.Declare(String)
+v.Global.sSuffix.Declare(String)
+v.Global.iQtyJob.Declare(Long)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'this project will allow the user to generate serial#s for a job after the job is created. 
+' it is assumed that they will NOT have the serialized required checked and that this would be ran to insert those serial #s after the job is created. 
+' kickoff meeting on 3/11 advised they will NOT be using the serialize with tracking option. 
+f.ODBC.Connection!con.opencompanyconnection
+
+'load deafults and dropdowns
+f.Intrinsic.Control.CallSub(InitForm)
+
+'insert logic here to allow for passed vars/switches from calling program/script
+
+'default to brows job. 
+f.Intrinsic.Control.CallSub(cmdBrwsJob_Click)
+
+gui.F_GenSerial..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.cmdBrwsJob_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdBrwsJob_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'this sub just browses for job first and loads grid if existing serial#s are there. 
+
+v.Local.sRet.Declare(String)
+v.Local.sTemp.Declare(String)
+f.Intrinsic.UI.Browser("1000","",v.Local.sRet)
+
+f.Intrinsic.Control.If(v.Local.sRet,<>,"***CANCEL***")
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	v.Global.sJob.Set(v.Local.sRet(0).trim)
+	v.Global.sSuffix.Set(v.Local.sRet(1).trim)
+	gui.F_GenSerial.lbl7.Caption(v.Local.sRet(3))
+	f.Intrinsic.String.Build("{0}-{1}",v.Global.sJob,v.Global.sSuffix,v.Global.sJobSuffix)
+	gui.F_GenSerial.txtJob.Text(v.Global.sJobSuffix)
+	
+	gui.F_GenSerial.txtQtyNeeded.Text("")
+	gui.F_GenSerial.cmdSave.Enabled(false)
+	
+	f.Intrinsic.Control.If(v.DataTable.Serials.Exists,=,True)
+		f.Data.DataTable.Close("Serials")
+	f.Intrinsic.Control.EndIf
+	'check to see if serials exist and if they do already, advise end-user to select a differnt job. this scope does not allow editing of existing. 
+	f.Intrinsic.Control.CallSub(GetSerials)
+	
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdBrwsJob_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.cmdBrwsJob_Click.End
+Program.Sub.Form_UnLoad.Start
+f.Intrinsic.Control.If(v.DataTable.Serials.Exists,=,True)
+	f.Data.DataTable.Close("Serials")
+f.Intrinsic.Control.EndIf
+f.ODBC.Connection!con.Close
+f.Intrinsic.Control.End
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.InitForm.Start
+'load defaults.
+F.Intrinsic.Control.SetErrorHandler("Form_UnLoad_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'format options of 1-4 spaces.
+gui.F_GenSerial.ddlFormat.AddItem("0")
+gui.F_GenSerial.ddlFormat.AddItem("00")
+gui.F_GenSerial.ddlFormat.AddItem("000")
+gui.F_GenSerial.ddlFormat.AddItem("0000")
+gui.F_GenSerial.ddlFormat.Text("0")
+
+
+'options for separator
+gui.F_GenSerial.ddlSeparator.AddItem("Dash")
+gui.F_GenSerial.ddlSeparator.AddItem("Space")
+gui.F_GenSerial.ddlSeparator.AddItem("None")
+gui.F_GenSerial.ddlSeparator.Text("Dash")
+
+
+Gui.F_GenSerial.txtPrefix.Text("1040096")
+
+gui.F_GenSerial.txtStartCnt.Text(1)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Form_UnLoad_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.InitForm.End
+Program.Sub.GetSerials.Start
+F.Intrinsic.Control.SetErrorHandler("GetSerials_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'this sub checks for serials that exist already. 
+
+v.Local.sSQL.Declare(String)
+v.Local.i.Declare(Long)
+v.Local.sRet.Declare(String)
+v.Local.sQty.Declare(String)
+v.Local.iLen.Declare(Long)
+
+
+'also set the job qty for checks in the UI/UX process
+f.Intrinsic.String.Build("Select QTY_ORDER,QTY_COMPLETED,DATE_CLOSED from v_JOB_HEADER where JOB = '{0}' and SUFFIX = '{1}'",v.Global.sJob,v.Global.sSuffix,v.Local.sSQL)
+f.ODBC.Connection!con.executeandreturn(v.Local.sSQL,v.Local.sRet)
+f.Intrinsic.Control.If(v.Local.sRet,<>,"")
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	v.Global.iQtyJob.Set(v.Local.sRet(0).long)
+	
+	f.Intrinsic.Control.If(v.Local.sRet(1),>,0)
+		'already completed pieces on job. cant touch the core serial#s with gab.
+		f.Intrinsic.UI.Msgbox("Job is already in-process with pieces completed, cannot alter serial #s.")
+		gui.F_GenSerial.txtJob.Text("")
+		gui.F_GenSerial.lbl7.Caption("")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+
+	f.Intrinsic.Control.If(v.Local.sRet(2).trim,<>,"1/1/1900")
+		'job closed
+		f.Intrinsic.UI.Msgbox("Job Closed, cannot generate serial#s")
+		gui.F_GenSerial.txtJob.Text("")
+		gui.F_GenSerial.lbl7.Caption("")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+
+	'set qty ordered as default
+	gui.F_GenSerial.txtQtyNeeded.Text(v.Local.sRet(0).long)
+	v.Local.sQty.Set(v.Local.sRet(0).long)
+	f.Intrinsic.String.Len(v.Local.sQty,v.Local.iLen)
+	f.Intrinsic.Control.SelectCase(v.Local.iLen)
+		f.Intrinsic.Control.Case(1)
+			gui.F_GenSerial.ddlFormat.Text("0")
+		f.Intrinsic.Control.Case(2)
+			gui.F_GenSerial.ddlFormat.Text("00")	
+		f.Intrinsic.Control.Case(3)
+			gui.F_GenSerial.ddlFormat.Text("000")
+		f.Intrinsic.Control.Case(4)
+			gui.F_GenSerial.ddlFormat.Text("0000")	
+		f.Intrinsic.Control.CaseElse
+			f.Intrinsic.UI.Msgbox("Qty Needed exceeds limits of applcication design (Format 0, 00, 000, 0000 are only options for suffix)")
+			f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndSelect
+f.Intrinsic.Control.EndIf
+
+
+f.Intrinsic.String.Build("Select SERIAL_START as SN from v_JOB_SERIAL where JOB = '{0}' and SUFFIX = '{1}'",v.Global.sJob,v.Global.sSuffix,v.Local.sSQL)
+'close if already created.
+f.Intrinsic.Control.If(v.DataTable.Serials.Exists,=,True)
+	f.Data.DataTable.close("Serials")
+f.Intrinsic.Control.EndIf
+f.Data.DataTable.CreateFromSQL("Serials","con",v.Local.sSQL,True)
+f.Intrinsic.Control.If(v.DataTable.Serials.RowCount,>,0)
+	f.Intrinsic.UI.Msgbox("Work Order already has Serial# List Generated, please select a different job to generate NEW Serial# List","Select Different Job")
+	gui.F_GenSerial.txtJob.Text("")
+	gui.F_GenSerial.lbl7.Caption("")
+	f.Data.DataTable.DeleteRow("Serials")
+	f.Data.Datatable.AcceptChanges("Serials")
+	gui.F_GenSerial.cmdGenerate.Enabled(false)
+f.Intrinsic.Control.else
+	gui.F_GenSerial.cmdGenerate.Enabled(true)
+f.Intrinsic.Control.EndIf
+	'format grid for generating new ones. 
+	gui.F_GenSerial.GsGridControl1.AddGridviewFromDatatable("gvSerials","Serials")
+	gui.F_GenSerial.GsGridControl1.SetGridviewProperty("gvSerials","ReadOnly",True)
+	gui.F_GenSerial.GsGridControl1.SetGridviewProperty("gvSerials","Editable",False)
+	
+	gui.F_GenSerial.GsGridControl1.SetColumnProperty("gvSerials","SN","Visible",True)
+	
+	gui.F_GenSerial.GsGridControl1.MainView("gvSerials")
+	
+'f.Intrinsic.Control.EndIf
+
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("GetSerials_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.GetSerials.End
+
+Program.Sub.cmdGenerate_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdGenerate_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+v.Local.i.Declare(Long)
+v.Local.sTemp.Declare(String)
+v.Local.sRet.Declare(String)
+v.Local.sSQL.Declare(String)
+v.Local.sDelim.Declare(String)
+v.Local.sPrefix.Declare(String)
+v.Local.sBase.Declare(String)
+v.Local.sSuffix.Declare(String)
+v.Local.iStart.Declare(Long)
+v.Local.iEnd.Declare(Long)
+v.Local.iCurr.Declare(long)
+v.Local.iLPadLength.Declare(Long)
+
+gui.F_GenSerial..Enabled(False)
+f.Intrinsic.UI.InvokeWaitDialog("Generating Serial Numbers")
+'check qty entered:
+'f.Intrinsic.Control.CallSub(qtyCheck)
+
+'separates components of serial#
+f.Intrinsic.Control.SelectCase(v.Screen.F_GenSerial!ddlSeparator.Value)
+	f.Intrinsic.Control.Case("Dash")
+		v.Local.sDelim.Set("-")
+	f.Intrinsic.Control.Case("Space")
+		v.Local.sDelim.Set(" ")
+f.Intrinsic.Control.EndSelect
+
+'control padding length of suffix (incrementing counter based on start# and qty needed)
+f.Intrinsic.Control.SelectCase(v.Screen.F_GenSerial!ddlFormat.Value)
+	f.Intrinsic.Control.Case("00")
+		v.Local.iLPadLength.Set(2)
+	f.Intrinsic.Control.Case("000")
+		v.Local.iLPadLength.Set(3)
+	f.Intrinsic.Control.Case("0000")
+		v.Local.iLPadLength.Set(4)
+	f.Intrinsic.Control.CaseElse
+		v.Local.iLPadLength.Set(1)
+f.Intrinsic.Control.EndSelect
+
+'init variables used. start# and qty needed. subtracting one so i can use i counter variable in loop to add easily
+f.Intrinsic.Math.Sub(v.Screen.F_GenSerial!txtQtyNeeded.text,1,v.Local.iEnd)
+v.Local.iStart.Set(v.Screen.F_GenSerial!txtStartCnt.text)
+f.Data.Datatable.DeleteRow("Serials")
+'f.Data.Datatable.AcceptChanges("Serials")
+gui.F_GenSerial.GsGridControl1.Visible(false)
+
+f.Intrinsic.Control.For(v.Local.i,0,v.Local.iEnd,1)
+	'increment suffix
+	f.Intrinsic.Math.Add(v.Local.iStart,v.Local.i,v.Local.iCurr)
+	f.Intrinsic.String.LPad(v.Local.iCurr.String,"0",v.Local.iLPadLength,v.Local.sSuffix)
+	
+	'prefix-base-increment
+	f.Intrinsic.String.Build("{1}{0}{2}{0}{3}",v.Local.sDelim,v.Screen.F_GenSerial!txtPrefix.text,v.Screen.F_GenSerial!txtBaseSN.text,v.Local.sSuffix,v.Local.sTemp)
+	f.Data.DataTable.AddRow("Serials","SN",v.Local.sTemp)
+	
+f.Intrinsic.Control.Next(v.Local.i)
+f.Intrinsic.UI.CloseWaitDialog
+gui.F_GenSerial..Enabled(True)
+f.Intrinsic.Control.If(v.DataTable.Serials.RowCount,>,0)
+	gui.F_GenSerial.cmdSave.Enabled(True)
+f.Intrinsic.Control.Else
+	gui.F_GenSerial.cmdSave.Enabled(false)
+f.Intrinsic.Control.EndIf
+gui.F_GenSerial.GsGridControl1.Visible(true)
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdGenerate_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdGenerate_Click.End
+
+Program.Sub.qtyCheck.Start
+F.Intrinsic.Control.SetErrorHandler("qtyCheck_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'this checks the qty needed texbox to see if it matches the job's run qty. 
+
+v.Local.sSQL.Declare(String)
+v.Local.bCheck.Declare(Boolean)
+
+f.Intrinsic.Control.If(v.Global.iQtyJob,<>,v.Screen.F_GenSerial!txtQtyNeeded.text)
+	f.Intrinsic.Variable.AddRV("bQtyCheck",False)
+f.Intrinsic.Control.Else
+	f.intrinsic.Variable.AddRV("bQtyCheck",True)
+f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("qtyCheck_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.qtyCheck.End
+
+Program.Sub.txtQtyNeeded_LostFocus.Start
+f.Intrinsic.Control.CallSub(qtyCheck)
+f.Intrinsic.UI.Msgbox("Must Equal Run Quantity on Job")
+gui.F_GenSerial.txtQtyNeeded.Text(v.Global.iQtyJob)
+Program.Sub.txtQtyNeeded_LostFocus.End
+Program.Sub.cmdSave_Click.Start
+F.Intrinsic.Control.SetErrorHandler("cmdSave_Click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.lLen.Declare
+
+''check row count to see if matches qty on job. has to equal. 
+f.Intrinsic.Control.If(v.DataTable.Serials.RowCount,<>,v.Global.iQtyJob)
+	f.Intrinsic.UI.Msgbox("No Serial#s Generated to meet Quantity Required on Job")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+
+f.Intrinsic.String.Len(V.DataTable.Serials(v.DataTable.Serials.RowCount--).SN!FieldVal,V.Local.lLen)
+f.Intrinsic.Control.If(V.Local.lLen,<=,30)
+	f.Data.DataTable.AddColumn("Serials","JOB","string",v.Global.sJob)
+	f.Data.DataTable.AddColumn("Serials","Suffix","string",v.Global.sSuffix)
+	f.Data.DataTable.AddColumn("Serials","SEQUENCE","string","000000")
+	f.Data.DataTable.AddColumn("Serials","Serial_End","string")
+	f.Data.DataTable.AddColumn("Serials","Date_Serial","string")
+	f.Data.DataTable.AddColumn("Serials","Time_Serial","string")
+	f.Data.DataTable.AddColumn("Serials","Flag_Status","string","I")
+	f.Data.DataTable.AddColumn("Serials","USERID","string",v.Caller.User.Trim)
+	f.Data.DataTable.AddColumn("Serials","Quantity","string","0.0000")
+	f.Data.DataTable.AddColumn("Serials","Serial_Prefix","string",v.Screen.F_GenSerial!txtPrefix.Text)
+	
+	f.Data.DataTable.SetValue("Serials",-1,"Date_Serial",v.Ambient.Date.FormatYYYYMMDD)
+	f.Data.DataTable.SetValue("Serials",-1,"Time_Serial",v.Ambient.Now.FormatHHNNSS)
+	
+	F.Data.DataTable.SaveToDB("Serials","con","JOB_SERIAL","JOB*!*Suffix*!*Serial_Start",128,"JOB@!@JOB*!*Suffix@!@Suffix*!*SEQUENCE@!@SEQUENCE*!*SN@!@Serial_Start*!*SN@!@Serial_End*!*Date_Serial@!@Date_Serial*!*Time_Serial@!@Time_Serial*!*Flag_Status@!@Flag_Status*!*USERID@!@USERID*!*Quantity@!@Quantity*!*Serial_Prefix@!@Serial_Prefix")
+	
+	f.Intrinsic.UI.Msgbox("Serial#s updated to JOB successfully")
+	
+	gui.F_GenSerial.txtJob.Text("")
+	gui.F_GenSerial.txtQtyNeeded.Text("")
+	f.Data.Datatable.DeleteRow("Serials")
+	gui.F_GenSerial.lbl7.Caption("")
+	gui.F_GenSerial.cmdSave.Enabled(false)
+f.Intrinsic.Control.Else
+	f.Intrinsic.UI.Msgbox("Serialno cannot exceed 30 chars")
+f.Intrinsic.Control.endif
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdSave_Click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: Project",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmdSave_Click.End
+
+Program.Sub.Comments.Start
+${$5$}$2.0.0.0$}$2
+${$6$}$rnair$}$20200402110623505$}$JUGEdtlNdgRUPvge2DQ26QlJ++3xMCFeIZjnOJ8yH07qF952MlcxQTFGJ9osWllOdf5C0lEndI0=
+Program.Sub.Comments.End
